@@ -1269,6 +1269,11 @@ load_xrdp_config(struct xrdp_config *config, const char *xrdp_ini, int bpp)
             globals->hidelogwindow = g_text2bool(v);
         }
 
+        else if (g_strncmp(n, "skiploginwindow", 64) == 0)
+        {
+            globals->skiploginwindow = g_text2bool(v);
+        }
+
         else if (g_strncmp(n, "require_credentials", 64) == 0)
         {
             globals->require_credentials = g_text2bool(v);

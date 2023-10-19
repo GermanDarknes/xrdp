@@ -101,6 +101,11 @@ If set to \fB1\fP, \fBtrue\fP or \fByes\fP, \fBxrdp\fP will not show a window fo
 If not specified, defaults to \fBfalse\fP.
 
 .TP
+\fBskiploginwindow\fP=\fI[true|false]\fP
+If set to \fB1\fP, \fBtrue\fP or \fByes\fP, \fBxrdp\fP will skip the login window and uses first session specified. It is required that all login-related fields are set, and no field in the is set to \fIask\fR in the first session.
+If not specified, defaults to \fBfalse\fP.
+
+.TP
 \fBmax_bpp\fP=\fI[8|15|16|24|32]\fP
 Limit the color depth by specifying the maximum number of bits per pixel.
 If not specified or set to \fB0\fP, unlimited.

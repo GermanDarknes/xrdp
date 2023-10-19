@@ -528,6 +528,7 @@ struct xrdp_wm
     struct xrdp_font *default_font;
     struct xrdp_keymap keymap;
     int hide_log_window;
+    int skip_login_window;
     int fatal_error_in_log_window;
     struct xrdp_bitmap *target_surface; /* either screen or os surface */
     int current_surface_index;
@@ -757,6 +758,7 @@ struct xrdp_cfg_globals
     int  tcp_recv_buffer_bytes;
     char autorun[256];
     int  hidelogwindow;
+    int  skiploginwindow;
     int  require_credentials;
     int  bulk_compression;
     int  new_cursors;

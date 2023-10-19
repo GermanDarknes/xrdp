@@ -494,6 +494,11 @@ xrdp_wm_load_static_colors_plus(struct xrdp_wm *self, char *autorun_name)
                         val = (char *)list_get_item(values, index);
                         self->hide_log_window = g_text2bool(val);
                     }
+                    else if (g_strcasecmp(val, "skiploginwindow") == 0)
+                    {
+                        val = (char *)list_get_item(values, index);
+                        self->skip_login_window = g_text2bool(val);
+                    }
                     else if (g_strcasecmp(val, "pamerrortxt") == 0)
                     {
                         val = (char *)list_get_item(values, index);
@@ -798,6 +803,12 @@ xrdp_wm_init(struct xrdp_wm *self)
         xrdp_bitmap_invalidate(self->screen, 0);
         xrdp_wm_set_focused(self, self->login_window);
         xrdp_wm_set_login_state(self, WMLS_USER_PROMPT);
+
+        /* if the skip flag is set to true and the first entry from the combobox doesn't have any input fields, press ok button */
+        if (self->skip_login_window && xrdp_bitmap_get_child_by_id(self->login_window, 100) == 0)
+        {
+            self->login_window->notify(self->login_window, xrdp_bitmap_get_child_by_id(self->login_window, 3), 1, 0, 0);
+        }
     }
 
     LOG(LOG_LEVEL_DEBUG, "out xrdp_wm_init: ");
